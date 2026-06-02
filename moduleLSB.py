@@ -54,10 +54,10 @@ def image_decript(image_path: str) -> str:
     for px_h in range(img.size[1]):
         for px_w in range(img.size[0]):
             pixel = img.getpixel((px_w, px_h))
-            bincode = f"{pixel[0]:16b}"[-3] + f"{pixel[0]:16b}"[-2] + f"{pixel[0]:16b}"[-1] + f"{pixel[1]:16b}"[-3] + f"{pixel[1]:16b}"[-2] + f"{pixel[1]:16b}"[-1] + f"{pixel[2]:16b}"[-2] + f"{pixel[2]:16b}"[-1]
-            if bincode == "0000000000000000":
-                Return True
-            text = f"{text}{chr(int(bincode, 2))}"
+            r_bits = f"{(pixel[0] & 0b111):03b}"
+            g_bits = f"{(pixel[1] & 0b111):03b}"
+            b_bits = f"{(pixel[2] & 0b11):02b}"
+            bincode = r_bits + g_bits + b_bits
     return text
 
 if __name__ == "__main__":
