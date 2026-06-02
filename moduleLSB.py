@@ -28,12 +28,13 @@ def image_encript(image_path: str, text: str) -> bool:
             else:
                 char_id = "0000000000000000"
             pixel = imgOpen.getpixel((px_w, px_h))
-            new_r = int(f"{pixel[0]:16b}"[:-3] + char_id[0] + char_id[1] + char_id[2], 2)
-            new_g = int(f"{pixel[1]:16b}"[:-3] + char_id[3] + char_id[4] + char_id[5], 2)
-            new_b = int("0" + f"{pixel[2]:16b}"[:-3] + char_id[6] + char_id[7], 2)
+            new_r = (pixel[0] & 0b11111000) | int(char_id[0:3], 2)
+            new_g = (pixel[1] & 0b11111000) | int(char_id[3:6], 2)
+            new_b = (pixel[2] & 0b11111100) | int(char_id[6:8], 2)
             imgOpen.putpixel((px_w, px_h), (new_r, new_g, new_b))
+
             if char_id == "0000000000000000":
-                break
+                return True
     imgOpen.save(copy_path)
     return True
 
@@ -55,7 +56,7 @@ def image_decript(image_path: str) -> str:
             pixel = img.getpixel((px_w, px_h))
             bincode = f"{pixel[0]:16b}"[-3] + f"{pixel[0]:16b}"[-2] + f"{pixel[0]:16b}"[-1] + f"{pixel[1]:16b}"[-3] + f"{pixel[1]:16b}"[-2] + f"{pixel[1]:16b}"[-1] + f"{pixel[2]:16b}"[-2] + f"{pixel[2]:16b}"[-1]
             if bincode == "0000000000000000":
-                break
+                Return True
             text = f"{text}{chr(int(bincode, 2))}"
     return text
 
