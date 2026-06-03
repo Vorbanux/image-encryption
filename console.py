@@ -15,7 +15,7 @@ def show_preview():
      ███████╗██████╔╝██████╔╝    ╚██████╗╚██████╔╝██║ ╚████║███████╗
      ╚══════╝╚═════╝ ╚═════╝      ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
                             
-                     [ v1.0 | Created by Vorbanux ]
+                     [ v2.0 | Created by Vorbanux ]
     ===================================================================
     """
     print(banner)
@@ -78,7 +78,7 @@ def menu():
     elif con_input == "4":
         os.system('cls' if os.name == 'nt' else 'clear')
         print("Version info\n")
-        print("Version: 1.0\nNext update: add russian language and add change language")
+        print("Version: 1.0")
         input("Press any key to continue: ")
         menu()
     elif con_input == "0":
