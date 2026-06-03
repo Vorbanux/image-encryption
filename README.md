@@ -7,3 +7,5 @@ The module operates using the LSB method. The first pixels of the image are read
 ### Additional
 
 This is <b>my second public repository</b> on GitHub. Don't judge me too harshly.
+
+Version: 2.0
