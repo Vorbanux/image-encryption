@@ -4,6 +4,9 @@ This repository contains two files: a module and a console. The console is only 
 ## Working method
 The module operates using the LSB method. The first pixels of the image are read, their colors (RGB) are converted to binary code, and then the character bits are distributed among them. For the red and green channels, the distribution is on the last three bits, and for the blue channel, the distribution is on the last two bits. This is how each character of the text is encrypted, and decryption proceeds similarly, but in reverse.
 
+## Libs
+module need pillow
+
 ### Additional
 
 This is <b>my second public repository</b> on GitHub. Don't judge me too harshly.
